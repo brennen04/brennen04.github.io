@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 480,
+  "height": 470,
+  "title": "Job vacancies by state/territory (Australia)",
+  "projection": {"type": "mercator", "center": [134.5, -28], "scale": 600},
+  "layer": [
+    {
+      "data": {"graticule": {"step": [10, 10]}},        
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#b8c2cc",
+        "strokeWidth": 0.6,
+        "fill": null
+      }
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/gh/rowanhogan/australian-states@master/states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "values": [
+                {"state": "Northern Territory", "vacancies": 5800},
+                {"state": "Australian Capital Territory", "vacancies": 7800},
+                {"state": "Tasmania", "vacancies": 5500},
+                {"state": "South Australia", "vacancies": 22000},
+                {"state": "Western Australia", "vacancies": 40600},
+                {"state": "Queensland", "vacancies": 71400},
+                {"state": "Victoria", "vacancies": 74800},
+                {"state": "New South Wales", "vacancies": 98100}
+              ]
+            },
+            "key": "state",
+            "fields": ["vacancies"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "shape": {"field": "geometry", "type": "geojson"},
+        "color": {
+          "field": "vacancies",
+          "type": "quantitative",
+          "title": "Job vacancies",
+          "scale": {"scheme": "blues"},
+          "legend": {"format": ",d"}
+        },
+        "tooltip": [
+          {"field": "properties.STATE_NAME", "title": "State/Territory"},
+          {"field": "vacancies", "type": "quantitative", "title": "Job Vacancies", "format": ",d"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/gh/rowanhogan/australian-states@master/states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8,
+        "strokeOpacity": 0.8
+      },
+      "encoding": {
+        "shape": {"field": "geometry", "type": "geojson"}
+      }
+    }
+  ]
+}
