@@ -59,7 +59,7 @@
     {
       "width": 480,
       "height": 470,
-      "title": "International Undergraduate Student Full-time Employment% by Course Area, Australia (2023 vs 2024)",
+      "title": "International Undergraduate Student Full-time Employment % by Course Area, Australia (2023 vs 2024)",
       "data": { "url": "data/week10hwdataset.csv" },
 
       "transform": [
@@ -93,7 +93,7 @@
         "tooltip": [
           { "field": "Course", "title": "Course Area" },
           { "field": "Year", "type": "ordinal" },
-          { "field": "value", "title": "Full-time employment", "format": ",d" }
+          { "field": "value", "title": "Full-time employment %", "format": ",d" }
         ]
       }
     }
