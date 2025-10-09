@@ -69,33 +69,46 @@
         { "filter": "datum.Year === YearParam" }
       ],
 
-      "mark": "bar",
-
-      "encoding": {
-        "x": {
-        "field": "Course",
-        "type": "nominal",
-        "title": "Course Area",
-        "sort": "-y",
-        "axis": {
-            "labelAngle": -35,        
-            "labelAlign": "right",    
-            "labelBaseline": "middle",
-            "labelLimit": 180,       
-            "labelPadding": 4
+      "layer": [
+        {
+          "mark": "bar",
+          "encoding": {
+            "x": {
+              "field": "Course",
+              "type": "nominal",
+              "title": "Course Area",
+              "sort": "-y",
+              "axis": {
+                "labelAngle": -35,
+                "labelAlign": "right",
+                "labelBaseline": "middle",
+                "labelLimit": 180,
+                "labelPadding": 4
+              },
+              "scale": { "paddingInner": 0.3, "paddingOuter": 0.2 }
+            },
+            "y": { "field": "value", "type": "quantitative", "title": "Full-time employment %", "axis": { "format": ",d" } },
+            "tooltip": [
+              { "field": "Course", "title": "Course Area" },
+              { "field": "Year", "type": "ordinal" },
+              { "field": "value", "title": "Full-time employment %", "format": ",d" }
+            ]
+          }
         },
-        "scale": {
-    "paddingInner": 0.3,  
-    "paddingOuter": 0.2 
-  }
-},
-        "y": { "field": "value", "type": "quantitative", "title": "Full-time employment %", "axis": { "format": ",d" } },
-        "tooltip": [
-          { "field": "Course", "title": "Course Area" },
-          { "field": "Year", "type": "ordinal" },
-          { "field": "value", "title": "Full-time employment %", "format": ",d" }
-        ]
-      }
+        {
+          "mark": {
+            "type": "text",
+            "dy": -4,
+            "fontSize": 11
+          },
+          "encoding": {
+            "x": { "field": "Course", "type": "nominal" },
+            "y": { "field": "value", "type": "quantitative" },
+            "text": { "field": "value", "type": "quantitative", "format": ",d" },
+            "color": { "value": "#111" }
+          }
+        }
+      ]
     }
   ],
   "spacing": 30,
