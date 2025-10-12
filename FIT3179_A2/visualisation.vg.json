@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Grouped bar chart showing median salary by education level and citizenship",
+  "width": 500,
+  "height": 400,
+  "data": {
+    "values": [
+      {"education level": "undergraduate", "citizenship": "International", "Median salary": 68900},
+      {"education level": "postgraduate coursework", "citizenship": "International", "Median salary": 70000},
+      {"education level": "postgraduate research", "citizenship": "International", "Median salary": 95600},
+      {"education level": "undergraduate", "citizenship": "Domestic", "Median salary": 75000},
+      {"education level": "postgraduate coursework", "citizenship": "Domestic", "Median salary": 101000},
+      {"education level": "postgraduate research", "citizenship": "Domestic", "Median salary": 104400}
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "datum['education level'] == 'undergraduate' ? 'Undergraduate' : datum['education level'] == 'postgraduate coursework' ? 'Postgraduate Coursework' : 'Postgraduate Research'",
+      "as": "Education Level Display"
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Education Level Display",
+          "type": "nominal",
+          "axis": { "title": "Education Level", "labelAngle": 0, "labelPadding": 6 },
+          "sort": ["Undergraduate", "Postgraduate Coursework", "Postgraduate Research"]
+        },
+        "xOffset": { "field": "citizenship" },
+        "y": {
+          "field": "Median salary",
+          "type": "quantitative",
+          "axis": { "title": "Median Salary (AUD)" }
+        },
+        "color": {
+          "field": "citizenship",
+          "type": "nominal",
+          "legend": { "title": "Citizenship" }
+        },
+        "order": { "field": "citizenship", "sort": "ascending" },
+        "tooltip": [
+          { "field": "Education Level Display", "title": "Education Level" },
+          { "field": "citizenship", "title": "Citizenship" },
+          { "field": "Median salary", "title": "Median Salary", "format": "$,d" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "center", "baseline": "bottom", "dy": -4 },
+      "encoding": {
+        "x": {
+          "field": "Education Level Display",
+          "type": "nominal",
+          "sort": ["Undergraduate", "Postgraduate Coursework", "Postgraduate Research"]
+        },
+        "xOffset": { "field": "citizenship" },
+        "y": { "field": "Median salary", "type": "quantitative" },
+        "text": { "field": "Median salary", "type": "quantitative", "format": "$,d" },
+        "color": { "value": "black" }
+      }
+    }
+  ]
+}
