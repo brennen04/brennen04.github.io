@@ -20,25 +20,58 @@
       The Next Chapter: Jobs, Pay, and Reality After University
     </h1>
     <p>
-      In Australia, the transition from university to the workforce is a significant milestone that shapes the future of graduates. This visualization explores the relationship between university degrees, employment rates, and average salaries across various fields of study. 
+      In Australia, the transition from university to the workforce is a significant milestone that shapes the future of graduates. <br>
+      This visualization explores the relationship between university degrees, employment rates, and average salaries across various 
+      <br>fields of study. 
     </p>
 
     <P>
-      Domestic students, who are Australian citizens or permanent residents, always have higher median salaries compared to international students 
-      <br>regardless the field of study and education level.
+      Domestic students, who are Australian citizens or permanent residents, always have higher median salaries compared to 
+      <br>international students regardless the field of study and education level.
     </P>
-    
+  
     <h3>
       Median Salary after Graduation vs Educational Level, 2024 (Domestic and International students)
     </h3>
-    <div id="vis"></div>
+    <div id="idionm1"></div>
+    <p>
+
+    </p>
+
+
+
+
+    <h3>
+      The Beginning: Graduation Is Only the Start
+    </h3>
+    
+    <p>
+      The end of university is the beginning of a bigger journey - one that leads into the workforce.
+      <br> But what does that path look like for thousands of Australian graduates every year?
+    </p>
+    <div id="idiom2"></div>
+
+
+
+
+
+
+
+
+
+
+
     <script>
     // point to your Vega-Lite spec file (same folder)
     const specUrl = "visualisation.vg.json";
-
-    vegaEmbed("#vis", specUrl, { actions: false })
+    const specIdiom2 = "visualisation2.vg.json";
+    vegaEmbed("#idionm1", specUrl, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
+    vegaEmbed("#idiom2", specIdiom2, { actions: false })
+      .then(() => console.log("Map loaded"))
+      .catch(err => console.error(err));
+
     </script>
 
     

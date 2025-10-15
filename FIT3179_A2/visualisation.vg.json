@@ -62,5 +62,6 @@
         "color": { "value": "black" }
       }
     }
-  ]
+  ],
+  "title": "Median Salary after Graduation by Education Level and Citizenship"
 }

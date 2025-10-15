@@ -1,0 +1,109 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Horizontal dumbbell chart with Domestic vs International and annotated percentage-point difference.",
+  "width": 610,
+  "height": 380,
+  "data": {
+    "url": "data/idiom2.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "number",
+        "Full-time Employment Rate": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "edu",
+      "value": "Undergraduate",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Undergraduate",
+          "Postgraduate coursework",
+          "Postgraduate research"
+        ],
+        "name": "Education level: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum['Education Level'] == edu"},
+    {"calculate": "toString(datum.Year)", "as": "YearStr"},
+    {
+      "pivot": "Citizenship Status",
+      "value": "Full-time Employment Rate",
+      "groupby": ["Year", "YearStr"]
+    },
+    {"calculate": "datum.Domestic", "as": "dom"},
+    {"calculate": "datum.International", "as": "intl"},
+    {"calculate": "datum.dom - datum.intl", "as": "diff"},
+    {"calculate": "(datum.dom + datum.intl)/2", "as": "mid"},
+    {"calculate": "'Diff: ' + format(datum.diff, '.1f') + ' %'", "as": "diffLabel"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 1},
+      "encoding": {
+        "x": {
+          "field": "YearStr",
+          "type": "ordinal",
+          "title": "Year",
+          "axis": {"labelAngle": 0},
+          "sort": "ascending"
+        },
+        "y": {
+          "field": "intl",
+          "type": "quantitative",
+          "title": "Full-time Employment Rate (%)",
+          "scale": {"domain": [0, 100]}
+        },
+        "y2": {"field": "dom"},
+        "tooltip": [
+          {"field": "Year", "type": "quantitative"},
+          {"field": "dom", "type": "quantitative", "title": "Domestic (%)", "format": ".1f"},
+          {"field": "intl", "type": "quantitative", "title": "International (%)", "format": ".1f"},
+          {"field": "diff", "type": "quantitative", "title": "Difference (Dom  Int, %)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"fold": ["Domestic", "International"], "as": ["Citizenship Status", "Rate"]}
+      ],
+      "mark": {"type": "point", "filled": true, "size": 90},
+      "encoding": {
+        "x": {
+          "field": "YearStr",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {"field": "Rate", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "color": {
+          "field": "Citizenship Status",
+          "type": "nominal",
+          "title": "Citizenship"
+        },
+        "tooltip": [
+          {"field": "Year", "type": "quantitative"},
+          {"field": "Rate", "type": "quantitative", "title": "Employment Rate (%)", "format": ".1f"},
+          {"field": "Citizenship Status", "type": "nominal"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "baseline": "middle", "dy": -10, "dx": 35},
+      "encoding": {
+        "x": {
+          "field": "YearStr",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {"field": "mid", "type": "quantitative"},
+        "text": {"field": "diffLabel"}
+      }
+    }
+  ],
+  "title": "Domestic vs International Full-time Employment - Dumbbell with %-Point Difference (Filter by Education Level)"
+}
