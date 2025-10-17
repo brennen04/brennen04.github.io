@@ -4,7 +4,7 @@
   "width": 610,
   "height": 380,
   "data": {
-    "url": "FIT3179_A2/data/Idiom2.csv",
+    "url": "https://raw.githubusercontent.com/brennen04/brennen04.github.io/main/FIT3179_A2/data/Idiom2.csv",
     "format": {
       "type": "csv",
       "parse": {
