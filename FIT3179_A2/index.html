@@ -33,9 +33,36 @@
       <div class="text">
         <h2>The Beginning: Graduation Is Only the Start</h2>
         <p>The end of university is the beginning of a bigger journey - one that leads into the workforce.
-            But what does that path look like for thousands of Australian graduates every year?</p>
+            But what does that path look like for thousands of Australian graduates every year?
+          </p>
+        <p>
+          Domestic graduates consistently get hired first across all degrees. Pursuing postgraduate coursework or
+           research clearly boosts employment outcomes for domestic graduates, helping them secure jobs more easily. 
+           For international students, however, only postgraduate research significantly improves employment chances.
+           The difference between domestic and international 
+           graduates narrows at the research level, showing that highly specialised skills can reduce the impact of
+            citizenship status on employment.
+        </p>
       </div>
       <div class="graph" id="idiom2"></div>
+    </div>
+
+    <div class="container">
+      <div class="text">
+        <h2> Degrees That Open Doors: Full-Time Employment After Graduation </h2>
+         <p>Some study paths lead straight into the workforce - others require a longer journey. 
+          Domestic graduates consistently achieve higher full-time employment across almost all study areas, 
+          often by 15-25 percentage points. Healthcare-related degrees perform strongly for both domestic and international
+           students, with fields like Medicine, Pharmacy, and Rehabilitation offering reliable job 
+           prospects thanks to clear pathways and strong demand. 
+           <p>
+            For international students, employment is generally lower -
+           especially in Communications and Creative Arts , where success relies more on local networks. Still,
+            there are bright spots: Dentistry sees international graduates outperform locals (93.3% vs 85.6%), and Tourism &
+             Hospitality shows almost no gap (68.5% vs 69.8%). This contrast shows how the field you choose can shape the speed and ease of your transition into the workforce.
+           </p>
+      </div>
+      <div class="graph" id="idiom3"></div>
     </div>
 
     <div class="container">
@@ -58,14 +85,19 @@
 
 
 
+
     <script>
     // point to your Vega-Lite spec file (same folder)
     const specUrl = "visualisation.vg.json";
     const specIdiom2 = "visualisation2.vg.json";
+    const specIdiom3 = "visualisation3.vg.json";
     vegaEmbed("#idionm1", specUrl, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
     vegaEmbed("#idiom2", specIdiom2, { actions: false })
+      .then(() => console.log("Map loaded"))
+      .catch(err => console.error(err));
+    vegaEmbed("#idiom3", specIdiom3, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
 

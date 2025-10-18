@@ -1,0 +1,143 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Diverging lollipop with Domestic/International-specific benchmarks (Domestic=74.0%, International=52.3%).",
+  "width": 500,
+  "height": {"step": 22},
+  "data": {
+    "url": "data/Idiom3.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Full-time employment 2024 International": "number",
+        "Full-time employment 2024 Domestic": "number"
+      }
+    }
+  },
+
+  "params": [
+    {
+      "name": "citizenship_filter",
+      "value": "Domestic",
+      "bind": {
+        "input": "select",
+        "options": ["Domestic", "International"],
+        "name": "Select Citizenship Status: "
+      }
+    }
+  ],
+
+  "transform": [
+    {
+      "fold": [
+        "Full-time employment 2024 International",
+        "Full-time employment 2024 Domestic"
+      ],
+      "as": ["CohortKey", "Full-time employment 2024"]
+    },
+    {
+      "calculate": "indexof(datum.CohortKey, 'International') >= 0 ? 'International' : 'Domestic'",
+      "as": "Citizenship"
+    },
+    {"filter": "datum.Citizenship == citizenship_filter"},
+
+
+    {"calculate": "datum.Citizenship == 'Domestic' ? 74.0 : 52.3", "as": "benchmark"},
+
+
+    {"calculate": "datum['Full-time employment 2024'] - datum.benchmark", "as": "delta"},
+    {"calculate": "datum.delta >= 0 ? 'Above average' : 'Below average'", "as": "category"}
+  ],
+
+  "encoding": {
+    "y": {
+      "field": "Study Area",
+      "type": "ordinal",
+      "title": "Study Area",
+      "sort": {"field": "delta", "order": "descending"}
+    },
+    "x": {
+      "field": "delta",
+      "type": "quantitative",
+      "title": "Above/below cohort benchmark (pp)",
+      "axis": {"format": "+.1f"}
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Performance vs benchmark",
+      "scale": {
+        "domain": ["Above average", "Below average"],
+        "range": ["#2ca02c", "#d62728"]
+      },
+      "legend": {
+        "orient": "top-left",
+        "direction": "vertical",
+        "fillColor": "#ffffffcc",
+        "cornerRadius": 1
+      }
+    },
+    "tooltip": [
+      {"field": "Study Area", "type": "nominal"},
+      {
+        "field": "Full-time employment 2024",
+        "type": "quantitative",
+        "title": "Full-time employment (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "benchmark",
+        "type": "quantitative",
+        "title": "Benchmark (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "delta",
+        "type": "quantitative",
+        "title": "delta vs benchmark (pp)",
+        "format": "+.1f"
+      },
+      {"field": "Citizenship", "type": "nominal"}
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 1, "color": "black"},
+      "encoding": {"x": {"datum": 0}}
+    },
+    {
+      "mark": {"type": "rule", "strokeWidth": 2},
+      "encoding": {"x": {"datum": 0}, "x2": {"field": "delta"}}
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 110}
+    },
+    {
+      "data": {"values": [{}]},
+      "transform": [
+        {
+          "calculate": "citizenship_filter=='Domestic' ? 'Note: Right of 0 = above Domestic avg (74.0%)' : 'Note: Right of 0 = above International avg (52.3%)'",
+          "as": "note"
+        }
+      ],
+      "mark": {"type": "text", "fontSize": 11, "dx": 6, "align": "left"},
+      "encoding": {
+        "x": {"value": 100},
+        "y": {"value": -8},
+        "text": {"field": "note", "type": "nominal"},
+        "color": {"value": "black"},
+        "tooltip": null
+      }
+    }
+  ],
+
+  "title": {
+    "text": "Full-Time Employment 2024 by Study Area",
+    "subtitle": "Deviation from cohort benchmark - Domestic (74.0%) or International (52.3%)"
+  },
+
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": true}
+  }
+}
