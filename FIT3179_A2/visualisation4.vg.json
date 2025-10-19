@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 680,
+  "title": "Job Vacancies & Vacancy Rate by State/Territory (Australia, 2024)",
+  "params": [
+    {
+      "name": "metric",
+      "value": "Rate",
+      "bind": {
+        "input": "select",
+        "options": ["Rate", "Vacancies"],
+        "labels": ["Vacancy rate (%)", "Job vacancies"],
+        "name": "Colour by: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://cdn.jsdelivr.net/gh/rowanhogan/australian-states@master/states.geojson",
+    "format": {"type": "json", "property": "features"}
+  },
+  "projection": {"type": "mercator", "center": [134.5, -28], "scale": 900},
+
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {"url": "data/Idiom4.csv"},
+        "key": "State and Territory",          
+        "fields": ["Labour Force", "Job Vacancies"],
+        "default": null
+      }
+    },
+    {
+      "calculate": "datum['Job Vacancies'] && datum['Labour Force'] ? (datum['Job Vacancies'] / datum['Labour Force']) * 100 : null",
+      "as": "Vacancy rate (%)"
+    },
+    {
+      "calculate": "metric == 'Vacancies' ? datum['Job Vacancies'] : datum['Vacancy rate (%)']",
+      "as": "metric_value"
+    },
+    {
+      "calculate": "metric == 'Vacancies' ? 'Job vacancies' : 'Vacancy rate (%)'",
+      "as": "metric_title"
+    }
+  ],
+
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "shape": {"field": "geometry", "type": "geojson"},
+    "color": {
+      "field": "metric_value",
+      "type": "quantitative",
+      "title": {"expr": "datum.metric_title"},
+      "scale": {"scheme": "blues", "unknown": "#eeeeee"},
+      "legend": {
+        "format": {"expr": "metric == 'Vacancies' ? ',d' : '.1f'"},
+        "titleLimit": 300
+      }
+    },
+    "tooltip": [
+      {"field": "properties.STATE_NAME", "title": "State/Territory"},
+      {"field": "Job Vacancies", "title": "Job vacancies", "format": ",d"},
+      {"field": "Labour Force", "title": "Labour force", "format": ",d"},
+      {"field": "Vacancy rate (%)", "title": "Vacancy rate (%)", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"orient": "right"},
+    "axis": {"grid": false}
+  }
+}
