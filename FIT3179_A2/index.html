@@ -67,6 +67,16 @@
 
     <div class="container">
       <div class="text">
+        <h2> Map </h2>
+        <p>Domestic students, who are Australian citizens or permanent residents, always have higher 
+          median salaries compared to international students regardless the field of study and education level.
+        </p>
+      </div>
+      <div class="graph" id="idiom4"></div>
+    </div>
+
+    <div class="container">
+      <div class="text">
         <h2> Does It Pay Off? Salary, Skills, and Success </h2>
         <p>Domestic students, who are Australian citizens or permanent residents, always have higher 
           median salaries compared to international students regardless the field of study and education level.
@@ -91,6 +101,7 @@
     const specUrl = "visualisation.vg.json";
     const specIdiom2 = "visualisation2.vg.json";
     const specIdiom3 = "visualisation3.vg.json";
+    const specIdiom4 = "visualisation4.vg.json";
     vegaEmbed("#idionm1", specUrl, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
@@ -98,6 +109,9 @@
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
     vegaEmbed("#idiom3", specIdiom3, { actions: false })
+      .then(() => console.log("Map loaded"))
+      .catch(err => console.error(err));
+    vegaEmbed("#idiom4", specIdiom4, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
 

@@ -13,11 +13,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
-  margin: 25px auto;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  max-width: 800px;               /*  slightly wider now */
+  max-width: 850px;               /*  slightly wider now */
   width: 90%;
   box-sizing: border-box;
 
@@ -48,3 +48,5 @@
     padding: 15px;
   }
 }
+
+.vega-embed, .vega-embed * { overflow: visible; }
