@@ -73,7 +73,8 @@
           "mark": {
             "type": "text",
             "fontSize": 10,
-            "dx": 12,
+            "dy": -10,
+            "dx": 5,
             "align": "left",
             "baseline": "middle",
             "color": "black"
@@ -91,7 +92,7 @@
         "type": "text",
         "baseline": "middle",
         "dy": -10,
-        "dx": 35,
+        "dx": 30,
         "color": "black",
         "fontSize": 10
       },
