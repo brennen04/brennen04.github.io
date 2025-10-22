@@ -7,7 +7,7 @@
     <title>Document</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
 
 
@@ -67,13 +67,17 @@
 
     <div class="container">
       <div class="text">
-        <h2> Map </h2>
-        <p>Domestic students, who are Australian citizens or permanent residents, always have higher 
-          median salaries compared to international students regardless the field of study and education level.
+        <h2> Jobs: Mapping Australia's Hiring Hotspots </h2>
+        <p>Vacancy rates show how many jobs are available compared to the labour force - 
+          a higher rate means more job openings per worker, often signalling strong demand or skill shortages. 
+          The ACT (5.2%) and Northern Territory (3.8%) lead with the most opportunities, while larger states like 
+          NSW (2.1%) and Victoria (1.9%) have tighter, more competitive markets. Nationally, the rate is around 2.5%, 
+          or roughly one unfilled job for every 40 workers.
         </p>
       </div>
       <div class="graph" id="idiom4"></div>
     </div>
+
 
     <div class="container">
       <div class="text">
@@ -82,8 +86,22 @@
           median salaries compared to international students regardless the field of study and education level.
         </p>
       </div>
+      <div class="graph" id="idiom5"></div>
+    </div>
+
+    <div class="container">
+      <div class="text">
+        <h2> Does It Pay Off? Postgraduate Study Might Help </h2>
+        <p>Higher education often boosts income, but not equally for everyone. Domestic graduates see major gains - from 
+          $75K at undergraduate to over $100K after postgraduate study - while international students benefit
+           most only through research degrees. This highlights that advanced qualifications pay off, yet returns
+            depend on citizenship and study type, reflecting differences in employability and industry pathways.
+        </p>
+      </div>
       <div class="graph" id="idionm1"></div>
     </div>
+
+
 
 
 
@@ -102,6 +120,7 @@
     const specIdiom2 = "visualisation2.vg.json";
     const specIdiom3 = "visualisation3.vg.json";
     const specIdiom4 = "visualisation4.vg.json";
+    const specIdiom5 = "visualisation5.vg.json";
     vegaEmbed("#idionm1", specUrl, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
@@ -114,6 +133,9 @@
     vegaEmbed("#idiom4", specIdiom4, { actions: false })
       .then(() => console.log("Map loaded"))
       .catch(err => console.error(err));
+    vegaEmbed("#idiom5", specIdiom5, { actions: false })
+      .then(() => console.log("Map loaded"))
+      .catch(err => console.error(err)); 
 
     </script>
 

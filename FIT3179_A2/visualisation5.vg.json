@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Full-time employment vs median salary by university network with citizenship filter, fixed domains, trendline, and wrapped legend labels.",
+  "width": 480,
+  "height": 430,
+  "title": {
+    "text": "Full-time Employment vs Median Salary by University Network",
+    "subtitle": "Note: Some universities have no International record in the dataset."
+  },
+  "data": { "url": "data/Idiom5_cleaned.csv" },
+
+  "params": [
+    {
+      "name": "citizenFilter",
+      "value": "Domestic",
+      "bind": { "input": "select", "options": ["Domestic", "International"], "name": "Citizenship: " }
+    }
+  ],
+
+  "transform": [
+    { "calculate": "toNumber(replace(datum['Median annual full-time salaries ($)'], ',', ''))", "as": "SalaryNum" },
+    { "calculate": "lower(trim(datum['Citizenship Status']))", "as": "CitizenNorm" },
+    { "filter": "datum.CitizenNorm == lower(citizenFilter)" },
+    { "filter": "isValid(datum['Full-time employment']) && isValid(datum.SalaryNum)" },
+    {
+      "calculate": "(datum['University'] == 'The University of Melbourne' || datum['University'] == 'Monash University' || datum['University'] == 'The University of Sydney' || datum['University'] == 'The University of Queensland' || datum['University'] == 'The University of Western Australia' || datum['University'] == 'The University of Adelaide' || datum['University'] == 'The University of New South Wales' || datum['University'] == 'The Australian National University') ? 'Go8 - Group of Eight (Research Intensive)' : (datum['University'] == 'Central Queensland University' || datum['University'] == 'University of Southern Queensland' || datum['University'] == 'University of New England' || datum['University'] == 'University of the Sunshine Coast' || datum['University'] == 'Charles Sturt University' || datum['University'] == 'Federation University Australia' || datum['University'] == 'Southern Cross University') ? 'RUN - Regional Universities Network' : (datum['University'] == 'RMIT University' || datum['University'] == 'University of Technology Sydney' || datum['University'] == 'Swinburne University of Technology' || datum['University'] == 'Curtin University') ? 'ATN - Australian Technology Network' : (datum['University'] == 'Murdoch University' || datum['University'] == 'Flinders University' || datum['University'] == 'Griffith University' || datum['University'] == 'La Trobe University' || datum['University'] == 'James Cook University') ? 'IRU - Innovative Research Universities' : 'Other Universities'",
+      "as": "University Group"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": { "type": "circle", "size": 90, "opacity": 0.8 },
+      "encoding": {
+        "x": {
+          "field": "Full-time employment",
+          "type": "quantitative",
+          "title": "Full-time Employment Rate (%)",
+          "scale": { "domain": [0, 100] }
+        },
+        "y": {
+          "field": "SalaryNum",
+          "type": "quantitative",
+          "title": "Median Annual Salary ($)",
+          "axis": { "format": "$,.0f" },
+          "scale": { "domain": [0, 90000] }   
+        },
+        "color": {
+          "field": "University Group",
+          "type": "nominal",
+          "legend": {
+            "title": "University Network",
+            "labelLimit": 0,
+            "labelLineHeight": 12}
+        },
+        "tooltip": [
+          { "field": "University", "title": "University" },
+          { "field": "Full-time employment", "title": "Full-time Employment (%)" },
+          { "field": "SalaryNum", "title": "Median Salary", "type": "quantitative", "format": "$,.0f" },
+          { "field": "University Group", "title": "Network" },
+          { "field": "Citizenship Status", "title": "Citizenship" }
+        ]
+      }
+    },
+    {
+      "transform": [{ "regression": "SalaryNum", "on": "Full-time employment" }],
+      "mark": { "type": "line", "strokeDash": [6, 4], "opacity": 0.9 },
+      "encoding": {
+        "x": { "field": "Full-time employment", "type": "quantitative", "scale": { "domain": [50, 100] } },
+        "y": { "field": "SalaryNum", "type": "quantitative", "scale": { "domain": [55000, 90000] } },
+        "color": { "value": "black" }
+      }
+    }
+  ]
+}

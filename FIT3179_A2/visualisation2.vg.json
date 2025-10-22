@@ -87,7 +87,7 @@
         },
         "tooltip": [
           {"field": "Year", "type": "quantitative"},
-          {"field": "Rate", "type": "quantitative", "title": "Employment Rate (%)", "format": ".1f"},
+          {"field": "Rate", "type": "quantitative", "title": "Full-time Employment (%)", "format": ".1f"},
           {"field": "Citizenship Status", "type": "nominal"}
         ]
       }
