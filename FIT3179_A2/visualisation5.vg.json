@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Full-time employment vs median salary by university network with citizenship filter, fixed domains, trendline, and wrapped legend labels.",
   "width": 480,
-  "height": 430,
+  "height": 300,
   "title": {
     "text": "Full-time Employment vs Median Salary by University Network",
     "subtitle": "Note: Some universities have no International record in the dataset."
@@ -30,7 +30,7 @@
 
   "layer": [
     {
-      "mark": { "type": "circle", "size": 90, "opacity": 0.8 },
+      "mark": { "type": "circle", "size": 90, "opacity": 0.85 },
       "encoding": {
         "x": {
           "field": "Full-time employment",
@@ -43,7 +43,7 @@
           "type": "quantitative",
           "title": "Median Annual Salary ($)",
           "axis": { "format": "$,.0f" },
-          "scale": { "domain": [0, 90000] }   
+          "scale": { "domain": [0, 90000] }
         },
         "color": {
           "field": "University Group",
@@ -51,8 +51,27 @@
           "legend": {
             "title": "University Network",
             "labelLimit": 0,
-            "labelLineHeight": 12}
+            "labelLineHeight": 12,
+            "symbolType": "circle",
+            "symbolStrokeWidth": 1.2
+          },
+          "scale": {
+            "range": [
+              "#7B3FE4",  
+              "#FFD54F",  
+              "#8D6E63", 
+              "#26C6DA",  
+              "#EC407A"   
+            ]
+          }
         },
+        "shape": {
+          "field": "University Group",
+          "type": "nominal",
+          "legend": null
+        },
+        "stroke": { "value": "black" },
+        "strokeWidth": { "value": 0.4 },
         "tooltip": [
           { "field": "University", "title": "University" },
           { "field": "Full-time employment", "title": "Full-time Employment (%)" },
@@ -71,5 +90,11 @@
         "color": { "value": "black" }
       }
     }
-  ]
+  ],
+
+  "config": {
+    "view": { "stroke": null },
+    "legend": { "orient": "right" },
+    "axis": { "grid": true }
+  }
 }

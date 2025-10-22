@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 500,
-  "height": 500,
+  "height": 450,
   "title": {
     "text": "Job Vacancy Pressure by State/Territory (2024)",
     "subtitle": "Vacancy rate (%): job openings per 100 people in the labour force"
@@ -41,27 +41,44 @@
       "encoding": {
         "shape": { "field": "geometry", "type": "geojson" },
         "color": {
-          "field": "Vacancy rate (%)",
-          "type": "quantitative",
-          "title": "Vacancy Rate (%)",
-          "scale": { "scheme": "blues", "unknown": "#eeeeee" },
-          "legend": {
-            "titleFontSize": 12,
-            "labelFontSize": 12,
-            "gradientLength": 200,
-            "orient": "right"
-          }
+            "field": "Vacancy rate (%)",
+            "type": "quantitative",
+            "title": "Vacancy Rate (%)",
+            "scale": { "scheme": "blues", "unknown": "#eeeeee" },
+            "legend": { "titleFontSize": 12, "labelFontSize": 12, "gradientLength": 200, "orient": "right" }
         },
         "tooltip": [
           { "field": "properties.STATE_NAME", "title": "State/Territory" },
           { "field": "Job Vacancies", "title": "Job vacancies", "format": ",d" },
           { "field": "Labour Force", "title": "Labour force", "format": ",d" },
-          {
-            "field": "Vacancy rate (%)",
-            "title": "Vacancy rate (%)",
-            "format": ".2f"
-          }
+          { "field": "Vacancy rate (%)", "title": "Vacancy rate (%)", "format": ".2f" }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"STATE_NAME":"Western Australia","lon":121.0,"lat":-25.0},
+          {"STATE_NAME":"Northern Territory","lon":133.0,"lat":-19.0},
+          {"STATE_NAME":"South Australia","lon":135.5,"lat":-30.5},
+          {"STATE_NAME":"Queensland","lon":146.0,"lat":-20.5},
+          {"STATE_NAME":"New South Wales","lon":147.0,"lat":-32.5},
+          {"STATE_NAME":"Victoria","lon":144.5,"lat":-37.0},
+          {"STATE_NAME":"Tasmania","lon":146.8,"lat":-42.0},
+          {"STATE_NAME":"ACT","lon":149.1,"lat":-35.3}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fill": "black",
+        "stroke": "black",
+        "strokeWidth": 0.1
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "STATE_NAME"}
       }
     }
   ],

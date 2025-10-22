@@ -1,10 +1,9 @@
 /* Basic page styling */
-.body {
+body {
   margin: 0;
   padding: 0;
-  font-family: T, sans-serif;
-  line-height: 1.5;
-  background: #fff;
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;  line-height: 1.5;
+  background: #f3e0ca;
 }
 
 /* Container for text + graph */
@@ -23,7 +22,7 @@
 
   /*  subtle shadow */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #fff;         /* optional: ensures shadow is visible */
+  background-color: #ffffff;         /* optional: ensures shadow is visible */
 }
 
 /* Text area */
@@ -31,14 +30,34 @@
   width: 100%;
 }
 
+.container .text h1,
+.container .text h2,
+.container .text h3 {
+  text-align: center;
+  width: 100%;
+  margin: 0.25em 0;
+}
+
+.container .text p {
+  text-align: left;
+}
+
+
 /* Graph area */
 .container .graph {
   width: 100%;
   min-height: 300px;
+  justify-content: center;
+  align-items: center;
 }
 .container .p {
   white-space: normal;      /* ensures text wraps naturally */
   word-wrap: break-word;    /*  allows long words/links to break */
+}
+
+/* ensure the embedded vega chart is horizontally centered */
+.container .graph > .vega-embed {
+  margin: 0 auto;
 }
 
 /* Responsive: adjust on small screens */

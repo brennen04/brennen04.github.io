@@ -1,144 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Next Chapter: Jobs, Pay, and Reality After University</title>
 
-    <title>Document</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-
-
-    <link rel="stylesheet" href="style.css">
-
-
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class='container'>
+
+  <div class="container">
     <div class="text">
-      <h1>
-      The Next Chapter: Jobs, Pay, and Reality After University
-    </h1>
-    <p>
-      In Australia, the transition from university to the workforce is a significant milestone that shapes the future of graduates.
-      This visualization explores the relationship between university degrees, employment rates, and average salaries across various 
-      fields of study. 
-    </p>
+      <h1>The Next Chapter: Jobs, Pay, and Reality After University</h1>
+      <p>
+        In Australia, the transition from university to the workforce is a significant milestone that shapes the future of graduates.
+        This visualization explores the relationship between university degrees, employment rates, and median salaries across various fields of study and universities. 
+      </p>
     </div>
   </div>
 
-    <div class="container">
-      <div class="text">
-        <h2>The Beginning: Graduation Is Only the Start</h2>
-        <p>The end of university is the beginning of a bigger journey - one that leads into the workforce.
-            But what does that path look like for thousands of Australian graduates every year?
-          </p>
-        <p>
-          Domestic graduates consistently get hired first across all degrees. Pursuing postgraduate coursework or
-           research clearly boosts employment outcomes for domestic graduates, helping them secure jobs more easily. 
-           For international students, however, only postgraduate research significantly improves employment chances.
-           The difference between domestic and international 
-           graduates narrows at the research level, showing that highly specialised skills can reduce the impact of
-            citizenship status on employment.
-        </p>
-      </div>
-      <div class="graph" id="idiom2"></div>
+  <div class="container">
+    <div class="text">
+      <h2>The Beginning: Graduation Is Only the Start</h2>
+      <p>
+        The end of university marks the beginning of a bigger journey - one that leads into the workforce.
+        But what does that path look like for thousands of Australian graduates every year?
+      </p>
+      <p>
+        <b>Domestic graduates</b> consistently get hired first across all degrees. Pursuing <b>postgraduate coursework</b> or 
+        <b>research</b> clearly boosts employment outcomes for domestic graduates, helping them secure jobs more easily. 
+        For <b>international students</b>, however, only <b>postgraduate research</b> significantly improves employment chances.
+        The difference between domestic and international graduates <b>narrows at the research level</b>, showing that
+        <b>highly specialised skills</b> can reduce the impact of citizenship status on employment.
+      </p>
     </div>
+    <div class="graph" id="idiom2"></div>
+  </div>
 
-    <div class="container">
-      <div class="text">
-        <h2> Degrees That Open Doors: Full-Time Employment After Graduation </h2>
-         <p>Some study paths lead straight into the workforce - others require a longer journey. 
-          Domestic graduates consistently achieve higher full-time employment across almost all study areas, 
-          often by 15-25 percentage points. Healthcare-related degrees perform strongly for both domestic and international
-           students, with fields like Medicine, Pharmacy, and Rehabilitation offering reliable job 
-           prospects thanks to clear pathways and strong demand. 
-           <p>
-            For international students, employment is generally lower -
-           especially in Communications and Creative Arts , where success relies more on local networks. Still,
-            there are bright spots: Dentistry sees international graduates outperform locals (93.3% vs 85.6%), and Tourism &
-             Hospitality shows almost no gap (68.5% vs 69.8%). This contrast shows how the field you choose can shape the speed and ease of your transition into the workforce.
-           </p>
-      </div>
-      <div class="graph" id="idiom3"></div>
+  <div class="container">
+    <div class="text">
+      <h2>Degrees That Open Doors: Full-Time Employment After Graduation</h2>
+      <p>
+        Some study paths lead straight into the workforce - others require a longer journey. 
+        <b>Domestic graduates</b> consistently achieve <b>higher full-time employment</b> across almost all study areas, 
+        often by <b>15-25 percentage points</b>. 
+        <b>Healthcare-related degrees</b> perform strongly for both groups, with fields like <b>Medicine</b>, <b>Pharmacy</b>, 
+        and <b>Rehabilitation</b> offering reliable job prospects thanks to clear pathways and strong demand. 
+      </p>
+      <p>
+        For <b>international graduates</b> international, employment is generally lower - especially in <b>Communications</b> and <b>Creative Arts</b>, 
+        where success relies more on local networks. Still, there are bright spots: 
+        <b>Dentistry</b> sees international graduates outperform locals (<b>93.3%</b> vs <b>85.6%</b>), and 
+        <b>Tourism & Hospitality</b> shows almost no gap (<b>68.5%</b> vs <b>69.8%</b>). 
+        This contrast shows how the <b>field you choose</b> can shape the speed and ease of your transition into the workforce.
+      </p>
     </div>
+    <div class="graph" id="idiom3"></div>
+  </div>
 
-    <div class="container">
-      <div class="text">
-        <h2> Jobs: Mapping Australia's Hiring Hotspots </h2>
-        <p>Vacancy rates show how many jobs are available compared to the labour force - 
-          a higher rate means more job openings per worker, often signalling strong demand or skill shortages. 
-          The ACT (5.2%) and Northern Territory (3.8%) lead with the most opportunities, while larger states like 
-          NSW (2.1%) and Victoria (1.9%) have tighter, more competitive markets. Nationally, the rate is around 2.5%, 
-          or roughly one unfilled job for every 40 workers.
-        </p>
-      </div>
-      <div class="graph" id="idiom4"></div>
+  <div class="container">
+    <div class="text">
+      <h2>Jobs: Mapping Australia's Hiring Hotspots</h2>
+      <p>
+        <b>Vacancy rates</b> show how many jobs are available compared to the labour force - 
+        a higher rate means more job openings per worker, often signalling strong demand or skill shortages. 
+        The <b>ACT (5.2%)</b> and <b>Northern Territory (3.8%)</b> lead with the most opportunities, 
+        while larger states like <b>NSW (2.1%)</b> and <b>Victoria (1.9%)</b> have tighter, more competitive markets. 
+        Nationally, the rate is around <b>2.5%</b> - roughly <b>one unfilled job for every 40 workers</b>.
+      </p>
     </div>
+    <div class="graph" id="idiom4"></div>
+  </div>
 
-
-    <div class="container">
-      <div class="text">
-        <h2> Does It Pay Off? Salary, Skills, and Success </h2>
-        <p>Domestic students, who are Australian citizens or permanent residents, always have higher 
-          median salaries compared to international students regardless the field of study and education level.
-        </p>
-      </div>
-      <div class="graph" id="idiom5"></div>
+  <div class="container">
+    <div class="text">
+      <h2>University: Prestigeness, Reality</h2>
+      <p>
+        <b>Domestic graduates</b> generally enjoy <b>higher full-time employment (70-85%)</b> and stronger 
+        <b>median salaries ($70k-80k)</b> across most universities.
+        However, at <b>Group of Eight (Go8)</b> universities, prestige doesn't always guarantee success - 
+        undergraduate and international graduates often record <b>lower employment rates (around 50-65%)</b> 
+        and moderate salaries. 
+        This highlights a clear <b>citizenship and institutional gap</b>, where <b>local experience</b>, 
+        <b>work rights</b>, and <b>regional demand</b> often outweigh university brand in shaping graduate employability.
+      </p>
     </div>
+    <div class="graph" id="idiom5"></div>
+  </div>
 
-    <div class="container">
-      <div class="text">
-        <h2> Does It Pay Off? Postgraduate Study Might Help </h2>
-        <p>Higher education often boosts income, but not equally for everyone. Domestic graduates see major gains - from 
-          $75K at undergraduate to over $100K after postgraduate study - while international students benefit
-           most only through research degrees. This highlights that advanced qualifications pay off, yet returns
-            depend on citizenship and study type, reflecting differences in employability and industry pathways.
-        </p>
-      </div>
-      <div class="graph" id="idionm1"></div>
+  <div class="container">
+    <div class="text">
+      <h2>Does It Pay Off? Postgraduate Study Might Help</h2>
+      <p>
+        Higher education often boosts income - but not equally for everyone. 
+        <b>Domestic graduates</b> see major gains, jumping from <b>$75K</b> at undergraduate to over <b>$100K</b> after postgraduate study. 
+        <b>International students</b> benefit most only through <b>research degrees</b>, highlighting that while 
+        <b>advanced qualifications pay off</b>, returns depend on <b>citizenship</b> and <b>study type</b>. 
+        This reflects how employability and income growth are tied to <b>industry pathways</b> and <b>work experience</b>.
+      </p>
     </div>
+    <div class="graph" id="idionm1"></div>
+  </div>
+
+<div class="container">
+    <div class="text">
+      <h3> Authorship </h3>
+      <p>
+        Author: Brennen Chong, Monash University
+        <br>Student ID: 33520615
+        <br> Date: 22/10/2025
+        <br>GenAi Declaration: I've used AI tools (ChatGPT) to help with grammar and phrasing. Futhermore, I also generated some code snippets for the visualisations using AI assistance.
+         I further edited text and code to align with the assignment specifications.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="text">
+      <h3>Metadata</h3>
+      <p>
+        Data source: <a href="https://www.qilt.edu.au/resources?survey=GOS&type=Reports"> https://www.qilt.edu.au/resources?survey=GOS&type=Reports </a>
+        <br>Author: Quality Indicators for Learning and Teaching (QILT)
+        <br>Date: 2020-2024
+      </p>
+
+      <p>
+        Data source: <a href="https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/latest-release">  https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/latest-release </a>
+        <br>Author: Australian Bureau of Statistics (ABS)
+        <br>Date: September 2024
+      </p>
+
+      <p>
+        Data source: <a href="https://www.abs.gov.au/statistics/labour/jobs/job-vacancies-australia/aug-2025">https://www.abs.gov.au/statistics/labour/jobs/job-vacancies-australia/aug-2025</a>
+        <br>Author: Australian Bureau of Statistics (ABS)
+        <br>Date: August 2025
+      </p>
+    </div>
+  </div>
+
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-    // point to your Vega-Lite spec file (same folder)
+  <script>
     const specUrl = "visualisation.vg.json";
     const specIdiom2 = "visualisation2.vg.json";
     const specIdiom3 = "visualisation3.vg.json";
     const specIdiom4 = "visualisation4.vg.json";
     const specIdiom5 = "visualisation5.vg.json";
-    vegaEmbed("#idionm1", specUrl, { actions: false })
-      .then(() => console.log("Map loaded"))
-      .catch(err => console.error(err));
-    vegaEmbed("#idiom2", specIdiom2, { actions: false })
-      .then(() => console.log("Map loaded"))
-      .catch(err => console.error(err));
-    vegaEmbed("#idiom3", specIdiom3, { actions: false })
-      .then(() => console.log("Map loaded"))
-      .catch(err => console.error(err));
-    vegaEmbed("#idiom4", specIdiom4, { actions: false })
-      .then(() => console.log("Map loaded"))
-      .catch(err => console.error(err));
-    vegaEmbed("#idiom5", specIdiom5, { actions: false })
-      .then(() => console.log("Map loaded"))
-      .catch(err => console.error(err)); 
 
-    </script>
+    vegaEmbed("#idionm1", specUrl, { actions: false });
+    vegaEmbed("#idiom2", specIdiom2, { actions: false });
+    vegaEmbed("#idiom3", specIdiom3, { actions: false });
+    vegaEmbed("#idiom4", specIdiom4, { actions: false });
+    vegaEmbed("#idiom5", specIdiom5, { actions: false });
+  </script>
 
-    
-</body> 
+</body>
 </html>

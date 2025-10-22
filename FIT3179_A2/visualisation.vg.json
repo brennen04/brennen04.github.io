@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Grouped bar chart showing median salary by education level and citizenship",
-  "width": 480,
-  "height": 380,
+  "width": 580,
+  "height": 330,
   "data": {
     "values": [
       {"education level": "undergraduate", "citizenship": "International", "Median salary": 68900},

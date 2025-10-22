@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Diverging lollipop with Domestic/International-specific benchmarks (Domestic=74.0%, International=52.3%).",
   "width": 500,
-  "height": {"step": 22},
+  "height": {"step": 18},
   "data": {
     "url": "data/Idiom3.csv",
     "format": {
@@ -132,7 +132,7 @@
   ],
 
   "title": {
-    "text": "Full-Time Employment 2024 by Study Area",
+    "text": "Undergraduate Full-Time Employment After Graduation 2024 by Study Area",
     "subtitle": "Deviation from cohort benchmark - Domestic (74.0%) or International (52.3%)"
   },
 
