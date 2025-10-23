@@ -57,7 +57,12 @@
       ],
       "layer": [
         {
-          "mark": {"type": "point", "filled": true, "size": 90},
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 100,
+            "opacity": 1
+          },
           "encoding": {
             "x": {"field": "YearStr", "type": "ordinal", "title": "Year"},
             "y": {"field": "Rate", "type": "quantitative", "scale": {"domain": [0, 100]}},

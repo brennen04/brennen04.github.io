@@ -4,7 +4,7 @@
   "width": 480,
   "height": 300,
   "title": {
-    "text": "Full-time Employment vs Median Salary by University Network",
+    "text": "Full-time Employment vs Median Salary by University Network (2024)",
     "subtitle": "Note: Some universities have no International record in the dataset."
   },
   "data": { "url": "data/Idiom5_cleaned.csv" },
