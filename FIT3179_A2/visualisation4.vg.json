@@ -3,7 +3,7 @@
   "width": 500,
   "height": 450,
   "title": {
-    "text": "Job Vacancy Pressure by State/Territory (2024)",
+    "text": "Job Vacancy Rate by State/Territory (2024)",
     "subtitle": "Vacancy rate (%): job openings per 100 people in the labour force"
   },
   "projection": {"type": "mercator", "center": [134.5, -28], "scale": 630},
