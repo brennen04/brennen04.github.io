@@ -13,7 +13,7 @@
     {
       "name": "citizenFilter",
       "value": "Domestic",
-      "bind": { "input": "select", "options": ["Domestic", "International"], "name": "Citizenship: " }
+      "bind": { "input": "select", "options": ["Domestic", "International"], "name": "Select Citizenship Status: " }
     }
   ],
 
